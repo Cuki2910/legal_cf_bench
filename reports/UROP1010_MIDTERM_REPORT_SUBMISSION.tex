@@ -1,0 +1,155 @@
+% XeLaTeX. Submission instructions: English, 3--6 pages, Times New Roman 12,
+% double-spaced, single column. Full numerical tables are a separate supplement.
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{setspace}
+\doublespacing
+\usepackage{array,tabularx,booktabs}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{plain}
+\mdfdefinestyle{vinframe}{linewidth=0.6pt,linecolor=black,innerleftmargin=7pt,innerrightmargin=7pt,innertopmargin=5pt,innerbottommargin=5pt,skipabove=0pt,skipbelow=0pt}
+\newcommand{\heading}[1]{\textbf{#1}\par\nobreak\vspace{2pt}\hrule\vspace{4pt}}
+\begin{document}
+\begingroup
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.05}
+\noindent\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{3.6cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{1.9cm}|>{\raggedright\arraybackslash}p{3.4cm}|}
+\hline
+\multicolumn{1}{|c|}{\includegraphics[width=3.4cm]{report_assets/vinuni_cecs_logo.png}} & \multicolumn{3}{>{\centering\arraybackslash}p{\dimexpr\textwidth-3.6cm-4\tabcolsep-3\arrayrulewidth\relax}|}{\textbf{MIDTERM REPORT}\newline\textbf{Undergraduate Research Opportunities Program 1 (UROP1010)}}\\ \hline
+\textbf{Student name:} & Đặng Tuấn Kiệt & \textbf{Date:} & 13/11/2026\\ \hline
+\textbf{Student ID:} & V202502041 & \textbf{Year:} & 2\\ \hline
+\textbf{College:} & College of Engineering and Computer Science & \textbf{Program:} & Bachelor of Data Science\\ \hline
+\textbf{Faculty supervisor:} & \multicolumn{3}{l|}{Dr. Nguyễn Hà Thành}\\ \hline
+\multicolumn{4}{|p{\dimexpr\textwidth-2\tabcolsep-2\arrayrulewidth\relax}|}{\textbf{Research Project Title:} Automated Counterfactual Challenge Generation for Legal QA Systems (working title)}\\ \hline
+\end{tabularx}
+\par\endgroup
+\begin{mdframed}[style=vinframe]
+\heading{I. Project Overview (20 points)}
+This project studies observable decision behavior under controlled factual interventions: relevant-fact sensitivity, irrelevant-fact robustness and explanation alignment. It does not infer true reasoning or the model's internal use of a factor.
+
+The research question remains open for supervisor discussion within a planned 3--4 month scope. Work comprises a literature review and fixed-template pilot. No LLM-based Challenger has been built; no novel gap or superiority is claimed.
+
+\end{mdframed}
+\begin{mdframed}[style=vinframe]
+\heading{II. Progress Update (50 points)}
+\textbf{Task 1: Literature review and question refinement.} I read all four recommended papers in full and recorded findings, interpretation and proposed methods separately. The review distinguishes explanation plausibility, faithfulness and behavioral self-consistency; consistency is not proof of faithfulness.
+
+\end{mdframed}
+\newpage
+\begin{mdframed}[style=vinframe]
+\heading{II. Progress Update --- Literature and Prototype}
+The faithful-explanation survey [1] and the ACL 2024 paper on faithfulness versus self-consistency [2] motivated cautious claims about input-edit tests. The ICLR 2025 paper, \textit{Walk the Talk?} [3], informed concept-editing and quality checks, but does not establish validity for legal interventions. The legal-reasoning framework [4] helped frame facts, hypotheses and outcomes. Establishing the expected outcome after an intervention remains an open methodological problem; the four-paper review does not establish a novel gap.
+
+\textbf{Task 2: Synthetic-rule prototype.} I implemented template-generated interventions and a three-valued evaluator: yes, no and undetermined. Missing facts are unknown, not false. Each rule is formalized using atoms and a formula. The pilot supplies the rule in the prompt; it does not test retrieval, real-law knowledge, Vietnamese Legal QA, or an automated Challenger.
+
+V1 contains seven development schemas (235 item IDs) and eight schemas held out at the time of the test run (239 IDs). Three model routes were evaluated: \path{cx/gpt-6.1-sol}, \path{cx/gpt-6-luna[1m]} and \path{cc/claude-haiku-4-5-20251001}, abbreviated Sol, Luna and Haiku. Backing model identity was not independently verified. Runs used temperature 0 and a 300-token output limit. Development used prompt pA; test used pA and pB, yielding 1,434 saved test responses. Prompt variation is not repeated measurement of the same configuration.
+
+\textbf{Code reference:} \url{https://github.com/Cuki2910/legal_cf_bench/tree/report-v2-validation}. The public repository [5] now includes the pushed v1/v2 code, aggregate results and validation notes on branch \texttt{report-v2-validation}. Raw API responses and credentials are excluded.
+
+\end{mdframed}
+\newpage
+\begin{mdframed}[style=vinframe]
+\heading{II. Progress Update --- Numerical Results}
+M1 is target-answer accuracy after a gold-changing intervention; M2 is accuracy after a same-value near-miss; M3 is accuracy after a plausible irrelevant addition. Values below are correct/eligible, unconditional on base correctness. They measure agreement with the current synthetic gold, \textbf{not validated legal accuracy or a model ranking}.
+
+\textbf{Table 1. Latest development results (pA; diagnostic, not held out).}
+\begin{center}
+\setlength{\tabcolsep}{10pt}
+\begin{tabular}{lrrr}
+\toprule
+Model & M1 & M2 & M3\\
+\midrule
+Sol & 85/86 & 42/44 & 42/42\\
+Luna & 83/86 & 41/44 & 42/42\\
+Haiku & 79/86 & 37/44 & 38/42\\
+\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Table 2. Frozen test results (all items retained).}
+\begin{center}
+\setlength{\tabcolsep}{9pt}
+\begin{tabular}{llrrr}
+\toprule
+Model & Prompt & M1 & M2 & M3\\
+\midrule
+Sol & pA & 61/80 & 27/39 & 38/48\\
+Sol & pB & 64/80 & 27/39 & 39/48\\
+Luna & pA & 65/80 & 31/39 & 40/48\\
+Luna & pB & 65/80 & 29/39 & 40/48\\
+Haiku & pA & 70/80 & 32/39 & 43/48\\
+Haiku & pB & 69/80 & 35/39 & 44/48\\
+\bottomrule
+\end{tabular}
+\end{center}
+Dev templates were revised after inspecting outputs. Test scores were preserved without post-hoc exclusions. The original v0 binary pilot had base accuracy 9/10 (Sol) and 10/10 (Luna), but ambiguous gold and a ceiling effect made those values design diagnostics only.
+
+\end{mdframed}
+\newpage
+\begin{mdframed}[style=vinframe]
+\heading{II. Progress Update --- Interpretation and Validation}
+\textbf{Task 3: Audit of benchmark validity.} Test contained 239 IDs but only 183 unique prompts: 46 duplicate groups contained 102 IDs. Some facts did not determine the assigned atom. Depositing a watch in a safe on the first day does not establish its location at theft; never writing to the creditor does not exclude a written acknowledgment to someone else; and a standard employment contract may itself contain job protection. Event frequency also does not by itself settle foreseeability.
+
+All 58 Sol pA disagreements were determinate gold answers paired with undetermined outputs. Some are defensible responses to these missing links, not established model errors. Haiku's higher test score therefore does not establish better legal ability. The reported single-fact explanation proxy also mixes edited-fact selection with format compliance; I do not use it as validated explanation alignment.
+
+For illustration, the exploratory pooled near-miss difference Haiku minus Sol was +16.7 percentage points (schema-bootstrap 95\% CI: +3.4 to +29.4). The flip difference was +8.8 points (CI: $-2.0$ to +18.4). These intervals use only eight clusters, have no multiple-comparison correction and do not include uncertainty in gold. They cannot resolve the validity problem. Haiku had one invalid test output, retained as incorrect.
+
+The keyword-trigger baseline starts from base gold: test M1 was 62/80, M2 6/39 and M3 18/48. Oracle scored 100\% by construction; it checks the pipeline, not English-to-formula validity. Computing symbolic gold is not a substitute for semantic annotation. Full conditional rates, other metrics, intervals, schema breakdowns and archived-run counts are preserved in the separate experimental supplement and local CSV/JSON files.
+
+\end{mdframed}
+\newpage
+\begin{mdframed}[style=vinframe]
+\heading{II. Progress Update --- Revised V2 and Next Steps}
+\textbf{Task 4: Offline implementation of the repairs.} I retained v1 unchanged and implemented a versioned revision with explicit factual conditions, stable fact IDs and single-fact intervention checks. Stimuli and intervention edges are separated, so identical stimuli need not be called repeatedly. All v1 schemas are now development data; four new schemas are reserved for later evaluation.
+
+\textbf{Table 3. V2 offline dataset (no model evaluation yet).}
+\begin{center}
+\setlength{\tabcolsep}{7pt}
+\begin{tabular}{lrrr}
+\toprule
+Split & Schemas & Stimuli & Edges\\
+\midrule
+Inherited, repaired dev & 15 & 346 & 361\\
+New test & 4 & 117 & 117\\
+Total & 19 & 463 & 478\\
+\bottomrule
+\end{tabular}
+\end{center}
+Fourteen offline tests pass. Read-once three-valued formulas are cross-checked by an independent Boolean-completion evaluator. Stimulus-level accuracy and pair-correctness have distinct denominators; the single-fact explanation proxy is excluded from ability conclusions. The runner can retain request/response metadata and distinguish prompt variation from repetitions.
+
+\textbf{Limitations and next steps.} V2's generated items still need human semantic review and second-reader checking; expert legal validity is unverified. No v2 API results are claimed. I will finalize one research question with the supervisor, adjudicate facts-to-atoms mappings, and freeze the revised data, prompts and code before further evaluation. The v1 test is no longer unseen data. The result of this stage is a prototype plus a documented validation failure and repair plan, not a validated benchmark or reliable automated legal Challenger.
+
+\end{mdframed}
+\newpage
+\begin{mdframed}[style=vinframe]
+\heading{III. Self-Evaluation (30 points)}
+Scale: 1 = unsatisfactory; 3 = average; 5 = excellent.
+
+\textbf{Professionalism: 4/5.} Attended seminars almost weekly and kept notes.
+\textbf{Timeliness/quality: 4/5.} Completed readings and a pilot; other commitments slowed progress.
+\textbf{Analytical skills: 5/5.} Investigated unexpected results and invalid assumptions.
+\textbf{Initiative: 4/5.} Proposed factual challenges and implemented a prototype.
+\textbf{Communication: 3/5.} Incorporated feedback but need more regular supervisor updates.
+\textbf{Strengths:} critical reading, implementation and cautious interpretation.
+\textbf{Improvements:} fixed weekly time, earlier validation and a narrower research question.
+\end{mdframed}
+\begin{mdframed}[style=vinframe]
+\heading{References}
+\noindent[1] Q. Lyu, M. Apidianaki, and C. Callison-Burch. ``Towards Faithful Model Explanation in NLP: A Survey.'' \textit{Computational Linguistics}, 2024. \url{https://aclanthology.org/2024.cl-2.6/}
+
+\noindent[2] L. Parcalabescu and A. Frank. ``On Measuring Faithfulness or Self-consistency of Natural Language Explanations.'' \textit{ACL}, 2024. \url{https://aclanthology.org/2024.acl-long.329/}
+
+\noindent[3] K. Matton, R. O. Ness, J. Guttag, and E. Kıcıman. ``Walk the Talk? Measuring the Faithfulness of Large Language Model Explanations.'' \textit{ICLR}, 2025. \href{https://proceedings.iclr.cc/paper_files/paper/2025/hash/b5ec50eb177908f21f78ed0d76ed525c-Abstract-Conference.html}{Official proceedings.}
+
+\noindent[4] H. T. Nguyen et al. ``LLMs for legal reasoning: A unified framework and future perspectives.'' \textit{Computer Law \& Security Review}, 2025. \url{https://doi.org/10.1016/j.clsr.2025.106165}
+
+\noindent[5] Đ. T. Kiệt. \textit{legal\_cf\_bench}. Project repository. \url{https://github.com/Cuki2910/legal_cf_bench/tree/report-v2-validation}
+\end{mdframed}
+\end{document}

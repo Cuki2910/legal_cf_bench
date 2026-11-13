@@ -15,6 +15,10 @@ Published review artifacts: [v2 items](data/v2/REVIEW.md), [manifest](data/v2/ma
 
 The original v0 interface below remains available for historical reproduction; its binary gold and explanation proxy were not validated. Do not use v0 to rank models.
 
+## Midterm report
+
+[Six-page submission PDF](reports/UROP1010_MIDTERM_REPORT_SUBMISSION.pdf) · [LaTeX source](reports/UROP1010_MIDTERM_REPORT_SUBMISSION.tex) · [Detailed experimental supplement](reports/UROP1010_EXPERIMENTAL_SUPPLEMENT.pdf). Compile from `reports/` with XeLaTeX and Times New Roman installed; the original VinUni logo is included in `reports/report_assets/`. The submission includes four paper references and this public branch.
+
 ## Original v0 pilot
 
 

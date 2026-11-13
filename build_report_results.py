@@ -75,7 +75,7 @@ def get(split, model, prompt):
 out = [r"\clearpage", r"\pagestyle{plain}", r"\appendix", r"\section*{Appendix A. Experimental results and implementation evidence}",
        r"\addcontentsline{toc}{section}{Experimental results}",
        r"\textbf{Interpretation boundary.} All numerical results below are agreement with the current synthetic gold, not validated legal accuracy or a model ranking. Gold was computed from symbolic rules, but a post-run audit found mismatches between some English facts and their intended atom values. Scores are retained without removing disputed items. Human/expert validation of the new item set remains incomplete.",
-       r"\textbf{Repository.} \url{https://github.com/Cuki2910/legal_cf_bench}. The GitHub repository is public. The remote currently contains the initial pilot commit; the v1/v2 additions and this report's result files are prepared locally for a planned public update. The link is therefore a code reference, not a claim that the latest experiments are remotely reproducible.",
+       r"\textbf{Repository.} \url{https://github.com/Cuki2910/legal_cf_bench/tree/report-v2-validation}. The GitHub repository is public. V1/v2 code and aggregate result files have been pushed to branch report-v2-validation. Raw API responses remain local, so the public aggregates do not independently reproduce provider outputs.",
        r"\textbf{Local evidence.} Counts were recomputed from \path{legal_cf_bench/results/*/raw.jsonl}; v0 values use the saved \path{summary.json}. The frozen test hash matches \path{docs/TEST_FREEZE.txt}. The accompanying \path{docs/REPORT_RESULTS.csv} and \path{docs/REPORT_RESULTS.json} contain the tabulated aggregates; \path{build_report_results.py} rebuilds this appendix without API calls. No raw response was discarded or retried because it was wrong."]
 
 out += [r"\subsection*{A.1 Setup, data sizes and operational definitions}",
@@ -269,7 +269,7 @@ if r"\usepackage{longtable}" not in s:
     s=s.replace(r"\usepackage{array,tabularx,booktabs}",r"\usepackage{array,tabularx,booktabs}"+"\n"+r"\usepackage{longtable}"+"\n"+r"\usepackage[hidelinks]{hyperref}"+"\n"+r"\usepackage{xurl}")
 s=s.replace("The revised implementation is in progress; its gold and performance have not yet been validated.","The revised offline implementation is complete and passes regression tests; its natural-language gold and model performance have not yet been validated. Detailed numerical tables, uncertainty estimates, archived-run inventory and the repository link are included in Appendix A.")
 # Retain a visible link in the progress section even if the appendix is read separately.
-link=r"\textbf{Code reference:} \url{https://github.com/Cuki2910/legal_cf_bench} (public; latest local update planned for push)."
+link=r"\textbf{Code reference:} \url{https://github.com/Cuki2910/legal_cf_bench/tree/report-v2-validation} (public; v1/v2 code and aggregates pushed on branch report-v2-validation)."
 if link not in s:
     s=s.replace(r"\textbf{Task 4: }",link+"\n\n"+r"\textbf{Task 4: }")
 s+="\n\n% BEGIN GENERATED RESULTS\n"+appendix+"\n\\end{document}\n"
