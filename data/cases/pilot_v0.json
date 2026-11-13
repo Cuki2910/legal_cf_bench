@@ -1,0 +1,284 @@
+{
+ "name": "pilot_v0",
+ "note": "10 hand-written cases, SYNTHETIC rules stated in the prompt (not real law). Fixed challenges, no Challenger.",
+ "cases": [
+  {
+   "id": "contract_fm",
+   "rule": "A party who fails to perform a contract is liable for breach, unless performance was prevented by force majeure (an unforeseeable event beyond the party's control).",
+   "facts": "A agreed to deliver 100 units to B by 1 June. A delivered none.",
+   "question": "Is A liable for breach?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "A's warehouse was destroyed by an unforeseeable earthquake days before the delivery date, making delivery impossible.",
+     "expected": "no",
+     "keywords": [
+      "earthquake",
+      "force majeure",
+      "unforeseeable",
+      "destroyed",
+      "impossible"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "A's company owns three delivery trucks.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "tenancy_writ",
+   "rule": "A landlord may evict a tenant who pays rent more than 30 days late, unless the landlord accepted the late payment in a signed written notice.",
+   "facts": "T paid the monthly rent 45 days late.",
+   "question": "May the landlord evict T?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The landlord accepted the late payment in a signed written notice.",
+     "expected": "no",
+     "keywords": [
+      "written",
+      "accepted",
+      "notice",
+      "signed"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "T's apartment is on the fifth floor.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "necessity",
+   "rule": "A person who damages another's property intentionally or negligently must pay compensation, unless the act was necessary to avert a greater imminent danger.",
+   "facts": "P broke a neighbour's fence while parking a car.",
+   "question": "Must P pay compensation?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "P broke the fence on purpose to open a path for firefighters to reach a burning house next door.",
+     "expected": "no",
+     "keywords": [
+      "fire",
+      "firefighter",
+      "necessity",
+      "danger",
+      "burning"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The fence was painted green.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "dismissal",
+   "rule": "An employer may dismiss a worker without notice only for serious misconduct; otherwise 30 days' notice is required.",
+   "facts": "An employer dismissed a worker immediately, without notice, because the worker was late to work twice.",
+   "question": "Was the dismissal without notice lawful?",
+   "base_expected": "no",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The worker was caught stealing cash from the till.",
+     "expected": "yes",
+     "keywords": [
+      "steal",
+      "theft",
+      "misconduct",
+      "cash"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The employer's office has 20 employees.",
+     "expected": "no",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "return_custom",
+   "rule": "A buyer may return goods within 14 days for a full refund, unless the goods were custom-made to the buyer's specification.",
+   "facts": "B returned a shirt five days after buying it and asked for a refund.",
+   "question": "Is B entitled to a refund?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The shirt had been tailored to B's own measurements.",
+     "expected": "no",
+     "keywords": [
+      "tailor",
+      "custom",
+      "measurement",
+      "specification"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The shirt is blue.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "minor_consent",
+   "rule": "A contract signed by a minor (under 18) may be cancelled by the minor, unless the minor's guardian consented to it in writing.",
+   "facts": "A 16-year-old bought a laptop and now wants to cancel the purchase.",
+   "question": "May the minor cancel the contract?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The minor's guardian signed a written consent to the purchase.",
+     "expected": "no",
+     "keywords": [
+      "guardian",
+      "consent",
+      "written"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The laptop is black.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "insurance_late",
+   "rule": "An insurer must pay a theft claim, unless the policyholder failed to report the theft to the police within 48 hours, except where reporting was physically impossible.",
+   "facts": "A theft occurred at the policyholder's home. The policyholder reported it to the police after five days, without giving any reason.",
+   "question": "Must the insurer pay the claim?",
+   "base_expected": "no",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The policyholder was unconscious in intensive care for the five days and reported on the day of recovery.",
+     "expected": "yes",
+     "keywords": [
+      "hospital",
+      "intensive",
+      "unconscious",
+      "impossible",
+      "recover"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The policy number starts with the digit 7.",
+     "expected": "no",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "debt_limit",
+   "rule": "A debt claim must be filed within 3 years of the due date, unless the debtor acknowledged the debt in writing during that period, which restarts the 3 years.",
+   "facts": "A debt fell due in January 2020. The creditor filed the claim in March 2024.",
+   "question": "Is the claim time-barred?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "In 2022 the debtor sent the creditor a letter acknowledging the debt.",
+     "expected": "no",
+     "keywords": [
+      "acknowledg",
+      "letter",
+      "2022",
+      "restart"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The creditor lives in another city.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "parking",
+   "rule": "A vehicle parked in a no-parking zone may be fined, unless it displays a valid disability permit.",
+   "facts": "A car was parked in a no-parking zone.",
+   "question": "May the car be fined?",
+   "base_expected": "yes",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The car displayed a valid disability permit.",
+     "expected": "no",
+     "keywords": [
+      "disability",
+      "permit"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The car is red.",
+     "expected": "yes",
+     "keywords": []
+    }
+   ]
+  },
+  {
+   "id": "hotel_safe",
+   "rule": "A hotel must compensate a guest for valuables stolen from the room only if the guest had deposited them in the hotel safe.",
+   "facts": "A guest's laptop was stolen from the hotel room. The guest had left it on the desk.",
+   "question": "Must the hotel compensate the guest?",
+   "base_expected": "no",
+   "challenges": [
+    {
+     "id": "rel1",
+     "type": "relevant",
+     "fact": "The guest had in fact deposited the laptop in the hotel safe before it was stolen.",
+     "expected": "yes",
+     "keywords": [
+      "safe",
+      "deposit"
+     ]
+    },
+    {
+     "id": "irr1",
+     "type": "irrelevant",
+     "fact": "The guest stayed three nights.",
+     "expected": "no",
+     "keywords": []
+    }
+   ]
+  }
+ ]
+}
