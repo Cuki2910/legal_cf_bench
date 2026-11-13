@@ -1,0 +1,1928 @@
+{
+  "dev/Sol/pA": {
+    "M0_base_accuracy": {
+      "k": 21,
+      "n": 21,
+      "rate": 1.0,
+      "ci95_cluster": [
+        1.0,
+        1.0
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 85,
+        "n": 86,
+        "rate": 0.988,
+        "ci95_cluster": [
+          0.965,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 85,
+        "n": 86,
+        "rate": 0.988,
+        "ci95_cluster": [
+          0.965,
+          1.0
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 42,
+        "n": 44,
+        "rate": 0.955,
+        "ci95_cluster": [
+          0.905,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 42,
+        "n": 44,
+        "rate": 0.955,
+        "ci95_cluster": [
+          0.905,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 32,
+      "n": 32,
+      "rate": 1.0,
+      "ci95_cluster": [
+        1.0,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 17,
+      "n": 18,
+      "rate": 0.944,
+      "ci95_cluster": [
+        0.812,
+        1.0
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 36,
+      "n": 36,
+      "rate": 1.0,
+      "ci95_cluster": [
+        1.0,
+        1.0
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 6,
+        "n": 6,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 10,
+        "n": 10,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 46,
+        "n": 46,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "4": {
+        "k": 23,
+        "n": 24,
+        "rate": 0.958,
+        "ci95_cluster": [
+          0.929,
+          1.0
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 5,
+        "n": 5,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 23,
+        "n": 24,
+        "rate": 0.958,
+        "ci95_cluster": [
+          0.857,
+          1.0
+        ]
+      },
+      "4": {
+        "k": 12,
+        "n": 13,
+        "rate": 0.923,
+        "ci95_cluster": [
+          0.875,
+          1.0
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 18,
+      "n": 21,
+      "rate": 0.857,
+      "ci95_cluster": [
+        0.667,
+        1.0
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 77,
+      "n": 79,
+      "rate": 0.975,
+      "ci95_cluster": [
+        0.946,
+        1.0
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 235
+  },
+  "dev/Luna/pA": {
+    "M0_base_accuracy": {
+      "k": 20,
+      "n": 21,
+      "rate": 0.952,
+      "ci95_cluster": [
+        0.857,
+        1.0
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 83,
+        "n": 86,
+        "rate": 0.965,
+        "ci95_cluster": [
+          0.919,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 79,
+        "n": 82,
+        "rate": 0.963,
+        "ci95_cluster": [
+          0.907,
+          1.0
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 41,
+        "n": 44,
+        "rate": 0.932,
+        "ci95_cluster": [
+          0.895,
+          0.976
+        ]
+      },
+      "cond": {
+        "k": 39,
+        "n": 42,
+        "rate": 0.929,
+        "ci95_cluster": [
+          0.891,
+          0.974
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 40,
+        "n": 40,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 41,
+        "n": 42,
+        "rate": 0.976,
+        "ci95_cluster": [
+          0.929,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 39,
+        "n": 40,
+        "rate": 0.975,
+        "ci95_cluster": [
+          0.925,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 32,
+      "n": 32,
+      "rate": 1.0,
+      "ci95_cluster": [
+        1.0,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 16,
+      "n": 18,
+      "rate": 0.889,
+      "ci95_cluster": [
+        0.75,
+        1.0
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 35,
+      "n": 36,
+      "rate": 0.972,
+      "ci95_cluster": [
+        0.921,
+        1.0
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 6,
+        "n": 6,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 9,
+        "n": 10,
+        "rate": 0.9,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 44,
+        "n": 46,
+        "rate": 0.957,
+        "ci95_cluster": [
+          0.857,
+          1.0
+        ]
+      },
+      "4": {
+        "k": 24,
+        "n": 24,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 5,
+        "n": 5,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 22,
+        "n": 24,
+        "rate": 0.917,
+        "ci95_cluster": [
+          0.857,
+          1.0
+        ]
+      },
+      "4": {
+        "k": 12,
+        "n": 13,
+        "rate": 0.923,
+        "ci95_cluster": [
+          0.875,
+          1.0
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 13,
+      "n": 21,
+      "rate": 0.619,
+      "ci95_cluster": [
+        0.381,
+        0.857
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 63,
+      "n": 77,
+      "rate": 0.818,
+      "ci95_cluster": [
+        0.722,
+        0.908
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 235
+  },
+  "dev/Haiku 4.5/pA": {
+    "M0_base_accuracy": {
+      "k": 18,
+      "n": 21,
+      "rate": 0.857,
+      "ci95_cluster": [
+        0.714,
+        0.952
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 79,
+        "n": 86,
+        "rate": 0.919,
+        "ci95_cluster": [
+          0.882,
+          0.971
+        ]
+      },
+      "cond": {
+        "k": 60,
+        "n": 66,
+        "rate": 0.909,
+        "ci95_cluster": [
+          0.833,
+          0.971
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 37,
+        "n": 44,
+        "rate": 0.841,
+        "ci95_cluster": [
+          0.771,
+          0.935
+        ]
+      },
+      "cond": {
+        "k": 33,
+        "n": 37,
+        "rate": 0.892,
+        "ci95_cluster": [
+          0.818,
+          0.971
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 38,
+        "n": 42,
+        "rate": 0.905,
+        "ci95_cluster": [
+          0.81,
+          0.976
+        ]
+      },
+      "cond": {
+        "k": 35,
+        "n": 36,
+        "rate": 0.972,
+        "ci95_cluster": [
+          0.906,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 38,
+        "n": 42,
+        "rate": 0.905,
+        "ci95_cluster": [
+          0.81,
+          0.976
+        ]
+      },
+      "cond": {
+        "k": 35,
+        "n": 36,
+        "rate": 0.972,
+        "ci95_cluster": [
+          0.917,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 30,
+      "n": 32,
+      "rate": 0.938,
+      "ci95_cluster": [
+        0.786,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 15,
+      "n": 18,
+      "rate": 0.833,
+      "ci95_cluster": [
+        0.556,
+        1.0
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 34,
+      "n": 36,
+      "rate": 0.944,
+      "ci95_cluster": [
+        0.882,
+        1.0
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 6,
+        "n": 6,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 10,
+        "n": 10,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 41,
+        "n": 46,
+        "rate": 0.891,
+        "ci95_cluster": [
+          0.857,
+          0.929
+        ]
+      },
+      "4": {
+        "k": 22,
+        "n": 24,
+        "rate": 0.917,
+        "ci95_cluster": [
+          0.857,
+          1.0
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 2,
+        "n": 2,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "2": {
+        "k": 5,
+        "n": 5,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      },
+      "3": {
+        "k": 18,
+        "n": 24,
+        "rate": 0.75,
+        "ci95_cluster": [
+          0.714,
+          0.778
+        ]
+      },
+      "4": {
+        "k": 12,
+        "n": 13,
+        "rate": 0.923,
+        "ci95_cluster": [
+          0.875,
+          1.0
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 9,
+      "n": 21,
+      "rate": 0.429,
+      "ci95_cluster": [
+        0.143,
+        0.762
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 64,
+      "n": 77,
+      "rate": 0.831,
+      "ci95_cluster": [
+        0.713,
+        0.935
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 235
+  },
+  "test/Sol/pA": {
+    "M0_base_accuracy": {
+      "k": 17,
+      "n": 24,
+      "rate": 0.708,
+      "ci95_cluster": [
+        0.583,
+        0.833
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 61,
+        "n": 80,
+        "rate": 0.762,
+        "ci95_cluster": [
+          0.632,
+          0.875
+        ]
+      },
+      "cond": {
+        "k": 38,
+        "n": 52,
+        "rate": 0.731,
+        "ci95_cluster": [
+          0.55,
+          0.87
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 27,
+        "n": 39,
+        "rate": 0.692,
+        "ci95_cluster": [
+          0.488,
+          0.889
+        ]
+      },
+      "cond": {
+        "k": 23,
+        "n": 23,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 38,
+        "n": 48,
+        "rate": 0.792,
+        "ci95_cluster": [
+          0.625,
+          0.917
+        ]
+      },
+      "cond": {
+        "k": 34,
+        "n": 34,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 38,
+        "n": 48,
+        "rate": 0.792,
+        "ci95_cluster": [
+          0.625,
+          0.917
+        ]
+      },
+      "cond": {
+        "k": 34,
+        "n": 34,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 25,
+      "n": 30,
+      "rate": 0.833,
+      "ci95_cluster": [
+        0.615,
+        0.971
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 13,
+      "n": 18,
+      "rate": 0.722,
+      "ci95_cluster": [
+        0.5,
+        0.938
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 23,
+      "n": 32,
+      "rate": 0.719,
+      "ci95_cluster": [
+        0.611,
+        0.833
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 9,
+        "n": 12,
+        "rate": 0.75,
+        "ci95_cluster": [
+          0.5,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 27,
+        "n": 30,
+        "rate": 0.9,
+        "ci95_cluster": [
+          0.833,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 18,
+        "n": 28,
+        "rate": 0.643,
+        "ci95_cluster": [
+          0.5,
+          0.786
+        ]
+      },
+      "4": {
+        "k": 7,
+        "n": 10,
+        "rate": 0.7,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 3,
+        "n": 4,
+        "rate": 0.75,
+        "ci95_cluster": [
+          0.5,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 14,
+        "n": 15,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 7,
+        "n": 15,
+        "rate": 0.467,
+        "ci95_cluster": [
+          0.25,
+          0.714
+        ]
+      },
+      "4": {
+        "k": 3,
+        "n": 5,
+        "rate": 0.6,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 8,
+      "n": 24,
+      "rate": 0.333,
+      "ci95_cluster": [
+        0.083,
+        0.625
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 58,
+      "n": 59,
+      "rate": 0.983,
+      "ci95_cluster": [
+        0.952,
+        1.0
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 239
+  },
+  "test/Sol/pB": {
+    "M0_base_accuracy": {
+      "k": 19,
+      "n": 24,
+      "rate": 0.792,
+      "ci95_cluster": [
+        0.625,
+        0.917
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 64,
+        "n": 80,
+        "rate": 0.8,
+        "ci95_cluster": [
+          0.677,
+          0.922
+        ]
+      },
+      "cond": {
+        "k": 47,
+        "n": 58,
+        "rate": 0.81,
+        "ci95_cluster": [
+          0.667,
+          0.929
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 27,
+        "n": 39,
+        "rate": 0.692,
+        "ci95_cluster": [
+          0.488,
+          0.889
+        ]
+      },
+      "cond": {
+        "k": 25,
+        "n": 26,
+        "rate": 0.962,
+        "ci95_cluster": [
+          0.85,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 39,
+        "n": 48,
+        "rate": 0.812,
+        "ci95_cluster": [
+          0.688,
+          0.938
+        ]
+      },
+      "cond": {
+        "k": 38,
+        "n": 38,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 39,
+        "n": 48,
+        "rate": 0.812,
+        "ci95_cluster": [
+          0.688,
+          0.938
+        ]
+      },
+      "cond": {
+        "k": 38,
+        "n": 38,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 26,
+      "n": 30,
+      "rate": 0.867,
+      "ci95_cluster": [
+        0.714,
+        0.971
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 13,
+      "n": 18,
+      "rate": 0.722,
+      "ci95_cluster": [
+        0.5,
+        0.938
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 25,
+      "n": 32,
+      "rate": 0.781,
+      "ci95_cluster": [
+        0.658,
+        0.929
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 11,
+        "n": 12,
+        "rate": 0.917,
+        "ci95_cluster": [
+          0.833,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 28,
+        "n": 30,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 18,
+        "n": 28,
+        "rate": 0.643,
+        "ci95_cluster": [
+          0.5,
+          0.786
+        ]
+      },
+      "4": {
+        "k": 7,
+        "n": 10,
+        "rate": 0.7,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 3,
+        "n": 4,
+        "rate": 0.75,
+        "ci95_cluster": [
+          0.5,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 14,
+        "n": 15,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 7,
+        "n": 15,
+        "rate": 0.467,
+        "ci95_cluster": [
+          0.25,
+          0.714
+        ]
+      },
+      "4": {
+        "k": 3,
+        "n": 5,
+        "rate": 0.6,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 11,
+      "n": 24,
+      "rate": 0.458,
+      "ci95_cluster": [
+        0.167,
+        0.75
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 59,
+      "n": 62,
+      "rate": 0.952,
+      "ci95_cluster": [
+        0.896,
+        1.0
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 239
+  },
+  "test/Luna/pA": {
+    "M0_base_accuracy": {
+      "k": 20,
+      "n": 24,
+      "rate": 0.833,
+      "ci95_cluster": [
+        0.708,
+        0.958
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 65,
+        "n": 80,
+        "rate": 0.812,
+        "ci95_cluster": [
+          0.69,
+          0.944
+        ]
+      },
+      "cond": {
+        "k": 51,
+        "n": 62,
+        "rate": 0.823,
+        "ci95_cluster": [
+          0.69,
+          0.944
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 31,
+        "n": 39,
+        "rate": 0.795,
+        "ci95_cluster": [
+          0.66,
+          0.941
+        ]
+      },
+      "cond": {
+        "k": 28,
+        "n": 29,
+        "rate": 0.966,
+        "ci95_cluster": [
+          0.903,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 40,
+        "n": 48,
+        "rate": 0.833,
+        "ci95_cluster": [
+          0.708,
+          0.938
+        ]
+      },
+      "cond": {
+        "k": 38,
+        "n": 40,
+        "rate": 0.95,
+        "ci95_cluster": [
+          0.875,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 42,
+        "n": 48,
+        "rate": 0.875,
+        "ci95_cluster": [
+          0.771,
+          0.958
+        ]
+      },
+      "cond": {
+        "k": 40,
+        "n": 40,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 27,
+      "n": 30,
+      "rate": 0.9,
+      "ci95_cluster": [
+        0.767,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 12,
+      "n": 18,
+      "rate": 0.667,
+      "ci95_cluster": [
+        0.4,
+        0.938
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 26,
+      "n": 32,
+      "rate": 0.812,
+      "ci95_cluster": [
+        0.722,
+        0.929
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 12,
+        "n": 12,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 28,
+        "n": 30,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 18,
+        "n": 28,
+        "rate": 0.643,
+        "ci95_cluster": [
+          0.5,
+          0.786
+        ]
+      },
+      "4": {
+        "k": 7,
+        "n": 10,
+        "rate": 0.7,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 4,
+        "n": 4,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 14,
+        "n": 15,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 9,
+        "n": 15,
+        "rate": 0.6,
+        "ci95_cluster": [
+          0.5,
+          0.714
+        ]
+      },
+      "4": {
+        "k": 4,
+        "n": 5,
+        "rate": 0.8,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 12,
+      "n": 24,
+      "rate": 0.5,
+      "ci95_cluster": [
+        0.208,
+        0.792
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 58,
+      "n": 63,
+      "rate": 0.921,
+      "ci95_cluster": [
+        0.855,
+        0.983
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 239
+  },
+  "test/Luna/pB": {
+    "M0_base_accuracy": {
+      "k": 20,
+      "n": 24,
+      "rate": 0.833,
+      "ci95_cluster": [
+        0.708,
+        0.958
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 65,
+        "n": 80,
+        "rate": 0.812,
+        "ci95_cluster": [
+          0.707,
+          0.922
+        ]
+      },
+      "cond": {
+        "k": 49,
+        "n": 62,
+        "rate": 0.79,
+        "ci95_cluster": [
+          0.643,
+          0.922
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 29,
+        "n": 39,
+        "rate": 0.744,
+        "ci95_cluster": [
+          0.659,
+          0.85
+        ]
+      },
+      "cond": {
+        "k": 27,
+        "n": 29,
+        "rate": 0.931,
+        "ci95_cluster": [
+          0.828,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 40,
+        "n": 48,
+        "rate": 0.833,
+        "ci95_cluster": [
+          0.708,
+          0.958
+        ]
+      },
+      "cond": {
+        "k": 40,
+        "n": 40,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 40,
+        "n": 48,
+        "rate": 0.833,
+        "ci95_cluster": [
+          0.708,
+          0.958
+        ]
+      },
+      "cond": {
+        "k": 40,
+        "n": 40,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 26,
+      "n": 30,
+      "rate": 0.867,
+      "ci95_cluster": [
+        0.714,
+        0.971
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 14,
+      "n": 18,
+      "rate": 0.778,
+      "ci95_cluster": [
+        0.556,
+        0.944
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 25,
+      "n": 32,
+      "rate": 0.781,
+      "ci95_cluster": [
+        0.658,
+        0.929
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 11,
+        "n": 12,
+        "rate": 0.917,
+        "ci95_cluster": [
+          0.833,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 28,
+        "n": 30,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.867,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 19,
+        "n": 28,
+        "rate": 0.679,
+        "ci95_cluster": [
+          0.571,
+          0.786
+        ]
+      },
+      "4": {
+        "k": 7,
+        "n": 10,
+        "rate": 0.7,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 3,
+        "n": 4,
+        "rate": 0.75,
+        "ci95_cluster": [
+          0.5,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 13,
+        "n": 15,
+        "rate": 0.867,
+        "ci95_cluster": [
+          0.8,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 10,
+        "n": 15,
+        "rate": 0.667,
+        "ci95_cluster": [
+          0.625,
+          0.714
+        ]
+      },
+      "4": {
+        "k": 3,
+        "n": 5,
+        "rate": 0.6,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 10,
+      "n": 24,
+      "rate": 0.417,
+      "ci95_cluster": [
+        0.167,
+        0.667
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 50,
+      "n": 63,
+      "rate": 0.794,
+      "ci95_cluster": [
+        0.648,
+        0.938
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 239
+  },
+  "test/Haiku 4.5/pA": {
+    "M0_base_accuracy": {
+      "k": 21,
+      "n": 24,
+      "rate": 0.875,
+      "ci95_cluster": [
+        0.708,
+        1.0
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 70,
+        "n": 80,
+        "rate": 0.875,
+        "ci95_cluster": [
+          0.75,
+          0.988
+        ]
+      },
+      "cond": {
+        "k": 63,
+        "n": 70,
+        "rate": 0.9,
+        "ci95_cluster": [
+          0.778,
+          0.988
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 32,
+        "n": 39,
+        "rate": 0.821,
+        "ci95_cluster": [
+          0.679,
+          0.971
+        ]
+      },
+      "cond": {
+        "k": 29,
+        "n": 32,
+        "rate": 0.906,
+        "ci95_cluster": [
+          0.806,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 43,
+        "n": 48,
+        "rate": 0.896,
+        "ci95_cluster": [
+          0.75,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 42,
+        "n": 42,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 43,
+        "n": 48,
+        "rate": 0.896,
+        "ci95_cluster": [
+          0.771,
+          0.979
+        ]
+      },
+      "cond": {
+        "k": 41,
+        "n": 42,
+        "rate": 0.976,
+        "ci95_cluster": [
+          0.925,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 27,
+      "n": 30,
+      "rate": 0.9,
+      "ci95_cluster": [
+        0.765,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 16,
+      "n": 18,
+      "rate": 0.889,
+      "ci95_cluster": [
+        0.773,
+        1.0
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 27,
+      "n": 32,
+      "rate": 0.844,
+      "ci95_cluster": [
+        0.643,
+        1.0
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 12,
+        "n": 12,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 25,
+        "n": 30,
+        "rate": 0.833,
+        "ci95_cluster": [
+          0.7,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 23,
+        "n": 28,
+        "rate": 0.821,
+        "ci95_cluster": [
+          0.643,
+          1.0
+        ]
+      },
+      "4": {
+        "k": 10,
+        "n": 10,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 4,
+        "n": 4,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 14,
+        "n": 15,
+        "rate": 0.933,
+        "ci95_cluster": [
+          0.8,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 9,
+        "n": 15,
+        "rate": 0.6,
+        "ci95_cluster": [
+          0.5,
+          0.714
+        ]
+      },
+      "4": {
+        "k": 5,
+        "n": 5,
+        "rate": 1.0,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 15,
+      "n": 24,
+      "rate": 0.625,
+      "ci95_cluster": [
+        0.375,
+        0.833
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 58,
+      "n": 68,
+      "rate": 0.853,
+      "ci95_cluster": [
+        0.758,
+        0.946
+      ]
+    },
+    "unparsable": 1,
+    "n_items": 239
+  },
+  "test/Haiku 4.5/pB": {
+    "M0_base_accuracy": {
+      "k": 23,
+      "n": 24,
+      "rate": 0.958,
+      "ci95_cluster": [
+        0.875,
+        1.0
+      ]
+    },
+    "M1_flip_sensitivity": {
+      "uncond": {
+        "k": 69,
+        "n": 80,
+        "rate": 0.863,
+        "ci95_cluster": [
+          0.795,
+          0.941
+        ]
+      },
+      "cond": {
+        "k": 65,
+        "n": 76,
+        "rate": 0.855,
+        "ci95_cluster": [
+          0.776,
+          0.941
+        ]
+      }
+    },
+    "M2_nearmiss_specificity": {
+      "uncond": {
+        "k": 35,
+        "n": 39,
+        "rate": 0.897,
+        "ci95_cluster": [
+          0.826,
+          0.973
+        ]
+      },
+      "cond": {
+        "k": 34,
+        "n": 36,
+        "rate": 0.944,
+        "ci95_cluster": [
+          0.889,
+          1.0
+        ]
+      }
+    },
+    "M3a_irrelevant_plausible": {
+      "uncond": {
+        "k": 44,
+        "n": 48,
+        "rate": 0.917,
+        "ci95_cluster": [
+          0.792,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 44,
+        "n": 46,
+        "rate": 0.957,
+        "ci95_cluster": [
+          0.905,
+          1.0
+        ]
+      }
+    },
+    "M3b_irrelevant_lexical": {
+      "uncond": {
+        "k": 45,
+        "n": 48,
+        "rate": 0.938,
+        "ci95_cluster": [
+          0.854,
+          1.0
+        ]
+      },
+      "cond": {
+        "k": 45,
+        "n": 46,
+        "rate": 0.978,
+        "ci95_cluster": [
+          0.935,
+          1.0
+        ]
+      }
+    },
+    "M7_flip_from_yes": {
+      "k": 27,
+      "n": 30,
+      "rate": 0.9,
+      "ci95_cluster": [
+        0.824,
+        1.0
+      ]
+    },
+    "M7_flip_from_no": {
+      "k": 14,
+      "n": 18,
+      "rate": 0.778,
+      "ci95_cluster": [
+        0.556,
+        1.0
+      ]
+    },
+    "M7_flip_from_undetermined": {
+      "k": 28,
+      "n": 32,
+      "rate": 0.875,
+      "ci95_cluster": [
+        0.75,
+        1.0
+      ]
+    },
+    "by_tier_M1": {
+      "1": {
+        "k": 12,
+        "n": 12,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 25,
+        "n": 30,
+        "rate": 0.833,
+        "ci95_cluster": [
+          0.733,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 24,
+        "n": 28,
+        "rate": 0.857,
+        "ci95_cluster": [
+          0.786,
+          0.929
+        ]
+      },
+      "4": {
+        "k": 8,
+        "n": 10,
+        "rate": 0.8,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "by_tier_M2": {
+      "1": {
+        "k": 4,
+        "n": 4,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "2": {
+        "k": 15,
+        "n": 15,
+        "rate": 1.0,
+        "ci95_cluster": [
+          1.0,
+          1.0
+        ]
+      },
+      "3": {
+        "k": 12,
+        "n": 15,
+        "rate": 0.8,
+        "ci95_cluster": [
+          0.75,
+          0.857
+        ]
+      },
+      "4": {
+        "k": 4,
+        "n": 5,
+        "rate": 0.8,
+        "ci95_cluster": [
+          null,
+          null
+        ]
+      }
+    },
+    "M4_case_consistency": {
+      "k": 14,
+      "n": 24,
+      "rate": 0.583,
+      "ci95_cluster": [
+        0.333,
+        0.833
+      ]
+    },
+    "M5_deciding_fact_agreement": {
+      "k": 58,
+      "n": 67,
+      "rate": 0.866,
+      "ci95_cluster": [
+        0.797,
+        0.929
+      ]
+    },
+    "unparsable": 0,
+    "n_items": 239
+  }
+}

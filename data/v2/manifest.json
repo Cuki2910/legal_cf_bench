@@ -1,0 +1,12 @@
+{
+  "dataset_sha256": "7ad4e09f971fcb08fca88487e0722eb7d768ba98646944586336ac90b029032f",
+  "code": {
+    "v2.py": "c789a972df276e68dd3a2d91b0e7c13ae56d54583c86def72c76968d2085dc74",
+    "rules_v2.py": "c33f5466a7b9ae30edfa1a66285b1eef034bc841b534b844a5c3cdcfd50f4787",
+    "logic.py": "799882483228b1d9479458e69366413f2438041420205f503bd4b97b6c50831d"
+  },
+  "human_item_review": "pending",
+  "second_reviewer": "unverified",
+  "allow_api": false,
+  "note": "Assistant checks are not human/expert semantic adjudication."
+}

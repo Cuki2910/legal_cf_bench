@@ -1,0 +1,12 @@
+openai-cc_claude-haiku-4-5-2 n= 235 unparsable 0
+  M0 0.857(18/21) M1 0.919(79/86) M2 0.841(37/44) M3a 0.905(38/42) M3b 0.905(38/42)
+  M4 0.429(9/21) M5 0.831(64/77)
+  M1 by dir {'lip_from_yes': '0.938(30/32)', 'flip_from_no': '0.833(15/18)', 'undetermined': '0.944(34/36)'}
+openai-cx_gpt-6-luna_1m n= 235 unparsable 0
+  M0 0.952(20/21) M1 0.965(83/86) M2 0.932(41/44) M3a 1.0(42/42) M3b 0.976(41/42)
+  M4 0.619(13/21) M5 0.818(63/77)
+  M1 by dir {'lip_from_yes': '1.0(32/32)', 'flip_from_no': '0.889(16/18)', 'undetermined': '0.972(35/36)'}
+openai-cx_gpt-6.1-sol n= 235 unparsable 0
+  M0 1.0(21/21) M1 0.988(85/86) M2 0.955(42/44) M3a 1.0(42/42) M3b 1.0(42/42)
+  M4 0.857(18/21) M5 0.975(77/79)
+  M1 by dir {'lip_from_yes': '1.0(32/32)', 'flip_from_no': '0.944(17/18)', 'undetermined': '1.0(36/36)'}

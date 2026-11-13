@@ -1,4 +1,22 @@
-# legal_cf_bench (pilot)
+# legal_cf_bench — synthetic-rule pilot and validation audit
+
+## Current status (v1/v2)
+
+- **V1:** 3 gateway model routes, 2 test prompts, 1,434 test responses. The audit found ambiguous fact-to-atom mappings and repeated stimuli; scores are **not a validated model ranking**. See [test results](docs/TEST_RESULTS_v1.md) and [validity audit](docs/TEST_VALIDITY_AUDIT_v1.md).
+- **V2 offline:** 19 schemas, 463 unique stimuli, 478 intervention edges; 14 regression tests pass. Human item review is pending, a second reader is unverified, and API evaluation is blocked by default. No v2 model scores or automated LLM Challenger are claimed.
+- Repaired v1 schemas are dev-only in v2. Four new synthetic schemas are reserved for later API evaluation. Synthetic rules are not real law.
+
+```sh
+python3 -W error::ResourceWarning -m unittest discover -s tests
+python3 -m lcb.v2 check
+```
+
+Published review artifacts: [v2 items](data/v2/REVIEW.md), [manifest](data/v2/manifest.json), [protocol](docs/V2_PROTOCOL.md), [aggregate results](docs/REPORT_RESULTS.json). Raw API responses remain local under ignored `results/`; aggregates alone do not independently reproduce those responses. `build_report_results.py` rebuilds the full supplement from those local runs and the report sources in the parent UROP directory; it is not a standalone fresh-clone report builder.
+
+The original v0 interface below remains available for historical reproduction; its binary gold and explanation proxy were not validated. Do not use v0 to rank models.
+
+## Original v0 pilot
+
 
 Behavioral counterfactual-challenge check for Legal QA. For each case: the base question, plus
 fact additions that should change the answer (relevant) or not (irrelevant). Stdlib only, Python 3.9+.

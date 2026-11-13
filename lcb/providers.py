@@ -22,7 +22,7 @@ def _post(url, headers, body, tries=3):
         try:
             req = urllib.request.Request(url, data, dict(headers, **{"content-type": "application/json"}))
             with urllib.request.urlopen(req, timeout=90) as r:
-                return json.load(r)
+                return _body(r.read())
         except urllib.error.HTTPError as e:
             detail = e.read()[:300].decode("utf8", "replace")
             if e.code in (429, 500, 502, 503, 529) and i < tries - 1:
@@ -34,6 +34,19 @@ def _post(url, headers, body, tries=3):
                 time.sleep(2 ** (i + 1))
                 continue
             raise ProviderError("network error: %s" % e)
+
+
+def _body(b):
+    """Some gateways answer with an SSE stream even when stream was not requested: fold it into one completion."""
+    t = b.decode("utf8", "replace")
+    if not t.lstrip().startswith("data:"):
+        return json.loads(t)
+    parts = []
+    for l in t.splitlines():
+        if l.startswith("data:") and l[5:].strip() not in ("", "[DONE]"):
+            for c in json.loads(l[5:]).get("choices", []):
+                parts.append((c.get("delta") or {}).get("content") or "")
+    return {"choices": [{"message": {"content": "".join(parts)}}]}
 
 
 def _key():

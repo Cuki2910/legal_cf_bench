@@ -1,0 +1,7 @@
+test split frozen before first test call
+items=239 schemas=8
+sha256(items json)=5a3e55ce1ef6db40db2829e67abfc1dac0748f235fd33d4deb6610e288eb7e2e
+parser rule: last flat JSON object in reply
+prompts: pA, pB (lcb/v1.py)
+models: cx/gpt-6.1-sol, cx/gpt-6-luna[1m], cc/claude-haiku-4-5-20251001; temperature 0, max_tokens 300
+NOTE: Kiet's audit of ITEMS_v1.md not confirmed at freeze time; disputed items get reported as flagged, not edited.

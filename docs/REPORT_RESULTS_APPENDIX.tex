@@ -1,0 +1,529 @@
+\clearpage
+
+\pagestyle{plain}
+
+\appendix
+
+\section*{Appendix A. Experimental results and implementation evidence}
+
+\addcontentsline{toc}{section}{Experimental results}
+
+\textbf{Interpretation boundary.} All numerical results below are agreement with the current synthetic gold, not validated legal accuracy or a model ranking. Gold was computed from symbolic rules, but a post-run audit found mismatches between some English facts and their intended atom values. Scores are retained without removing disputed items. Human/expert validation of the new item set remains incomplete.
+
+\textbf{Repository.} \url{https://github.com/Cuki2910/legal_cf_bench}. The GitHub repository is private (supervisor access must be granted separately). The remote currently contains the initial pilot commit; the v1/v2 additions and this report's result files are local and have not been pushed. The link is therefore a code reference, not a claim that the latest experiments are remotely reproducible.
+
+\textbf{Local evidence.} Counts were recomputed from \path{legal_cf_bench/results/*/raw.jsonl}; v0 values use the saved \path{summary.json}. The frozen test hash matches \path{docs/TEST_FREEZE.txt}. The accompanying \path{docs/REPORT_RESULTS.csv} and \path{docs/REPORT_RESULTS.json} contain the tabulated aggregates; \path{build_report_results.py} rebuilds this appendix without API calls. No raw response was discarded or retried because it was wrong.
+
+\subsection*{A.1 Setup, data sizes and operational definitions}
+
+The evaluated gateway route labels were \path{cx/gpt-6.1-sol} (Sol), \path{cx/gpt-6-luna[1m]} (Luna), and \path{cc/claude-haiku-4-5-20251001} (Haiku 4.5). These are requested route names; the actual backing model identity was not independently verified. V1 used temperature 0 and a 300-token output limit. Prompt pA and prompt pB differ in wording/order; they are not repeated runs of the same configuration.
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrr}
+\caption{Experiment inventory. Item counts are request-level IDs, not independent observations.}\\
+\toprule
+Stage & Schemas & Bases & Items/prompt & Saved outputs \\
+\midrule\endfirsthead
+\toprule
+Stage & Schemas & Bases & Items/prompt & Saved outputs \\
+\midrule\endhead
+\bottomrule\endfoot
+v0, 2 models, p1 & 10 & 10 & 30 & 60 \\
+v1 dev, 3 models, pA & 7 & 21 & 235 & 705 \\
+v1 test, 3 models, pA/pB & 8 & 24 & 239 & 1434 \\
+\end{longtable}\endgroup
+
+
+The 705 dev and 1,434 test outputs refer to the latest saved run directories. Historical development files overlap later retained records and must not be summed as independent API calls. Dev templates were revised after observing outputs; dev scores are diagnostic only. V1 contains 474 item IDs per prompt across dev and test. Test bases are label-balanced (8 yes, 8 no, 8 undetermined).
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrr}
+\caption{Frozen v1 test composition.}\\
+\toprule
+Condition & Count & Expected relation to base \\
+\midrule\endfirsthead
+\toprule
+Condition & Count & Expected relation to base \\
+\midrule\endhead
+\bottomrule\endfoot
+Base & 24 & -- \\
+F: plain atom flip & 32 & Gold changes \\
+N3: alternate-text flip & 32 & Gold changes \\
+S: supply missing atom & 16 & U to yes/no \\
+N: same-value near variant & 39 & Gold unchanged \\
+I1: plausible irrelevant & 48 & Gold unchanged \\
+I2: harmless irrelevant & 48 & Gold unchanged \\
+\end{longtable}\endgroup
+
+
+\textbf{Metrics.} M0: base accuracy. M1: accuracy after F/N3/S; M2: accuracy after N; M3a/M3b: accuracy after I1/I2. Unconditional values compare each target answer with gold; they do not by themselves require a change/stay relative to the model's own base answer. Conditional values restrict to correctly answered bases. M4 requires the base and every intervention within a case to be correct. M5 is a limited proxy: on correctly answered flips with determinate gold, does the one reported fact ID equal the edited fact ID? M6 measures answer agreement between pA and pB, not correctness. M7 separates M1 by base-gold direction. Headline metrics were M1, M2 and M3a; other analyses are supplementary.
+
+\textbf{Uncertainty.} V1 intervals use percentile cluster bootstrap over schemas (1,000 resamples, seed 0); counts are shown to expose denominators. Eight test clusters are too few for broad generalization. Paired comparison intervals below use 2,000 schema resamples, keep both prompts in each cluster, and have no multiple-comparison correction. These intervals do not account for disputed gold. Degenerate [100,100] conditional intervals only reflect the observed all-correct subset, not certainty about population performance.
+
+\subsection*{A.2 Original pilot v0 (historical; invalid for performance claims)}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrr}
+\caption{Saved v0 results; sensitivity/robustness conditioned on base correctness.}\\
+\toprule
+Model & Base & Sensitivity & Robustness & Keyword proxy \\
+\midrule\endfirsthead
+\toprule
+Model & Base & Sensitivity & Robustness & Keyword proxy \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 9/10 (90.0\%) & 7/9 (77.8\%) & 9/9 (100.0\%) & 7/7 (100.0\%) \\
+Luna & 10/10 (100.0\%) & 10/10 (100.0\%) & 10/10 (100.0\%) & 10/10 (100.0\%) \\
+\end{longtable}\endgroup
+
+
+V0 had only 10 cases, binary answers, imbalanced base labels, no near-miss category, and ambiguous/manual gold (including a necessary-condition versus sufficient-condition error). Its lexical explanation proxy is not explanation alignment. The results motivated v1 rather than supporting a performance claim. For example, a 10/10 v0 Wilson interval is approximately [72.2,100]\%, illustrating the small sample size.
+
+\subsection*{A.3 Latest development-set results (not held out)}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrr}
+\caption{Latest v1 dev scores, seven schemas, prompt pA. Gold/template revisions were informed by earlier outputs.}\\
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endfirsthead
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 21/21 (100.0\%) & 85/86 (98.8\%) & 42/44 (95.5\%) & 42/42 (100.0\%) & 42/42 (100.0\%) \\
+Luna & 20/21 (95.2\%) & 83/86 (96.5\%) & 41/44 (93.2\%) & 42/42 (100.0\%) & 41/42 (97.6\%) \\
+Haiku 4.5 & 18/21 (85.7\%) & 79/86 (91.9\%) & 37/44 (84.1\%) & 38/42 (90.5\%) & 38/42 (90.5\%) \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrr}
+\caption{Development secondary metrics after the final-answer parser was fixed before test.}\\
+\toprule
+Model & M4 & M5 proxy & Invalid \\
+\midrule\endfirsthead
+\toprule
+Model & M4 & M5 proxy & Invalid \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 18/21 (85.7\%) & 77/79 (97.5\%) & 0 \\
+Luna & 13/21 (61.9\%) & 63/77 (81.8\%) & 0 \\
+Haiku 4.5 & 9/21 (42.9\%) & 64/77 (83.1\%) & 0 \\
+\end{longtable}\endgroup
+
+
+The early four-schema dev set showed ceiling behavior for Sol; three harder schemas were added. Ambiguous examples were subsequently clarified. Those iterations are development decisions, not additional held-out evidence. Haiku's three earlier ``unparsable'' dev responses contained self-corrections with multiple JSON objects; the parser was fixed to take the last parseable object before freezing test. Final dev values above are recomputed from stored raw with that rule.
+
+\subsection*{A.4 Frozen test: all three models and both prompts}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrr}
+\caption{Test results, pA, unconditional. All 239 items retained per model.}\\
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endfirsthead
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 17/24 (70.8\%) & 61/80 (76.2\%) & 27/39 (69.2\%) & 38/48 (79.2\%) & 38/48 (79.2\%) \\
+Luna & 20/24 (83.3\%) & 65/80 (81.2\%) & 31/39 (79.5\%) & 40/48 (83.3\%) & 42/48 (87.5\%) \\
+Haiku 4.5 & 21/24 (87.5\%) & 70/80 (87.5\%) & 32/39 (82.1\%) & 43/48 (89.6\%) & 43/48 (89.6\%) \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrr}
+\caption{Test results, pB, unconditional. All 239 items retained per model.}\\
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endfirsthead
+\toprule
+Model & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 19/24 (79.2\%) & 64/80 (80.0\%) & 27/39 (69.2\%) & 39/48 (81.2\%) & 39/48 (81.2\%) \\
+Luna & 20/24 (83.3\%) & 65/80 (81.2\%) & 29/39 (74.4\%) & 40/48 (83.3\%) & 40/48 (83.3\%) \\
+Haiku 4.5 & 23/24 (95.8\%) & 69/80 (86.2\%) & 35/39 (89.7\%) & 44/48 (91.7\%) & 45/48 (93.8\%) \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrrr}
+\caption{Schema-cluster 95\% intervals for unconditional test rates (percentage points).}\\
+\toprule
+Model & Prompt & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & [58.3, 83.3] & [63.2, 87.5] & [48.8, 88.9] & [62.5, 91.7] & [62.5, 91.7] \\
+Luna & pA & [70.8, 95.8] & [69.0, 94.4] & [66.0, 94.1] & [70.8, 93.8] & [77.1, 95.8] \\
+Haiku 4.5 & pA & [70.8, 100.0] & [75.0, 98.8] & [67.9, 97.1] & [75.0, 100.0] & [77.1, 97.9] \\
+Sol & pB & [62.5, 91.7] & [67.7, 92.2] & [48.8, 88.9] & [68.8, 93.8] & [68.8, 93.8] \\
+Luna & pB & [70.8, 95.8] & [70.7, 92.2] & [65.9, 85.0] & [70.8, 95.8] & [70.8, 95.8] \\
+Haiku 4.5 & pB & [87.5, 100.0] & [79.5, 94.1] & [82.6, 97.3] & [79.2, 100.0] & [85.4, 100.0] \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrr}
+\caption{Test metrics conditional on a correct base. Denominators differ by model.}\\
+\toprule
+Model & Prompt & M1c & M2c & M3ac & M3bc \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & M1c & M2c & M3ac & M3bc \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & 38/52 (73.1\%) & 23/23 (100.0\%) & 34/34 (100.0\%) & 34/34 (100.0\%) \\
+Luna & pA & 51/62 (82.3\%) & 28/29 (96.6\%) & 38/40 (95.0\%) & 40/40 (100.0\%) \\
+Haiku 4.5 & pA & 63/70 (90.0\%) & 29/32 (90.6\%) & 42/42 (100.0\%) & 41/42 (97.6\%) \\
+Sol & pB & 47/58 (81.0\%) & 25/26 (96.2\%) & 38/38 (100.0\%) & 38/38 (100.0\%) \\
+Luna & pB & 49/62 (79.0\%) & 27/29 (93.1\%) & 40/40 (100.0\%) & 40/40 (100.0\%) \\
+Haiku 4.5 & pB & 65/76 (85.5\%) & 34/36 (94.4\%) & 44/46 (95.7\%) & 45/46 (97.8\%) \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lllrr}
+\caption{Conditional test intervals. Selection on correct bases prevents a like-for-like model comparison.}\\
+\toprule
+Model & Prompt & Metric & Correct/eligible & 95\% CI \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & Metric & Correct/eligible & 95\% CI \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & M1 & 38/52 (73.1\%) & [55.0, 87.0] \\
+Sol & pA & M2 & 23/23 (100.0\%) & [100.0, 100.0] \\
+Sol & pA & M3a & 34/34 (100.0\%) & [100.0, 100.0] \\
+Sol & pA & M3b & 34/34 (100.0\%) & [100.0, 100.0] \\
+Luna & pA & M1 & 51/62 (82.3\%) & [69.0, 94.4] \\
+Luna & pA & M2 & 28/29 (96.6\%) & [90.3, 100.0] \\
+Luna & pA & M3a & 38/40 (95.0\%) & [87.5, 100.0] \\
+Luna & pA & M3b & 40/40 (100.0\%) & [100.0, 100.0] \\
+Haiku 4.5 & pA & M1 & 63/70 (90.0\%) & [77.8, 98.8] \\
+Haiku 4.5 & pA & M2 & 29/32 (90.6\%) & [80.6, 100.0] \\
+Haiku 4.5 & pA & M3a & 42/42 (100.0\%) & [100.0, 100.0] \\
+Haiku 4.5 & pA & M3b & 41/42 (97.6\%) & [92.5, 100.0] \\
+Sol & pB & M1 & 47/58 (81.0\%) & [66.7, 92.9] \\
+Sol & pB & M2 & 25/26 (96.2\%) & [85.0, 100.0] \\
+Sol & pB & M3a & 38/38 (100.0\%) & [100.0, 100.0] \\
+Sol & pB & M3b & 38/38 (100.0\%) & [100.0, 100.0] \\
+Luna & pB & M1 & 49/62 (79.0\%) & [64.3, 92.2] \\
+Luna & pB & M2 & 27/29 (93.1\%) & [82.8, 100.0] \\
+Luna & pB & M3a & 40/40 (100.0\%) & [100.0, 100.0] \\
+Luna & pB & M3b & 40/40 (100.0\%) & [100.0, 100.0] \\
+Haiku 4.5 & pB & M1 & 65/76 (85.5\%) & [77.6, 94.1] \\
+Haiku 4.5 & pB & M2 & 34/36 (94.4\%) & [88.9, 100.0] \\
+Haiku 4.5 & pB & M3a & 44/46 (95.7\%) & [90.5, 100.0] \\
+Haiku 4.5 & pB & M3b & 45/46 (97.8\%) & [93.5, 100.0] \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrr}
+\caption{Secondary test metrics. M5 is reported for completeness, not as validated alignment.}\\
+\toprule
+Model & Prompt & M4 & M4 CI & M5 proxy & Invalid \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & M4 & M4 CI & M5 proxy & Invalid \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & 8/24 (33.3\%) & [8.3, 62.5] & 58/59 (98.3\%) & 0 \\
+Luna & pA & 12/24 (50.0\%) & [20.8, 79.2] & 58/63 (92.1\%) & 0 \\
+Haiku 4.5 & pA & 15/24 (62.5\%) & [37.5, 83.3] & 58/68 (85.3\%) & 1 \\
+Sol & pB & 11/24 (45.8\%) & [16.7, 75.0] & 59/62 (95.2\%) & 0 \\
+Luna & pB & 10/24 (41.7\%) & [16.7, 66.7] & 50/63 (79.4\%) & 0 \\
+Haiku 4.5 & pB & 14/24 (58.3\%) & [33.3, 83.3] & 58/67 (86.6\%) & 0 \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrr}
+\caption{M6: prompt stability across the same 239 test IDs.}\\
+\toprule
+Model & Same answer pA/pB & 95\% CI \\
+\midrule\endfirsthead
+\toprule
+Model & Same answer pA/pB & 95\% CI \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & 232/239 (97.1\%) & [93.9, 99.2] \\
+Luna & 221/239 (92.5\%) & [87.3, 97.6] \\
+Haiku 4.5 & 208/239 (87.0\%) & [79.0, 93.8] \\
+\end{longtable}\endgroup
+
+
+Haiku pA has one invalid output at \path{dismissal_no_notice/yes/N.A2}; it ends mid-sentence and is counted as incorrect. Finish reason was not saved, so truncation cause is unverified. All other test answers parse. Stability can coexist with consistently wrong answers; it is not an accuracy measure.
+
+\subsection*{A.5 Breakdown by intervention, direction, tier and schema}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrrrr}
+\caption{Correct targets by intervention category; counts, not independent samples.}\\
+\toprule
+Model & Prompt & F & N3 & S & N & I1 & I2 \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & F & N3 & S & N & I1 & I2 \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & 26/32 & 25/32 & 10/16 & 27/39 & 38/48 & 38/48 \\
+Luna & pA & 27/32 & 26/32 & 12/16 & 31/39 & 40/48 & 42/48 \\
+Haiku 4.5 & pA & 28/32 & 28/32 & 14/16 & 32/39 & 43/48 & 43/48 \\
+Sol & pB & 27/32 & 25/32 & 12/16 & 27/39 & 39/48 & 39/48 \\
+Luna & pB & 27/32 & 26/32 & 12/16 & 29/39 & 40/48 & 40/48 \\
+Haiku 4.5 & pB & 27/32 & 28/32 & 14/16 & 35/39 & 44/48 & 45/48 \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lllr}
+\caption{M7 expanded into actual base-gold to target-gold directions.}\\
+\toprule
+Model & Prompt & Direction & Correct targets \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & Direction & Correct targets \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & yes $\to$ no & 25/30 \\
+Sol & pA & no $\to$ yes & 11/16 \\
+Sol & pA & no $\to$ undetermined & 2/2 \\
+Sol & pA & undetermined $\to$ yes & 4/10 \\
+Sol & pA & undetermined $\to$ no & 19/22 \\
+Luna & pA & yes $\to$ no & 27/30 \\
+Luna & pA & no $\to$ yes & 10/16 \\
+Luna & pA & no $\to$ undetermined & 2/2 \\
+Luna & pA & undetermined $\to$ yes & 7/10 \\
+Luna & pA & undetermined $\to$ no & 19/22 \\
+Haiku 4.5 & pA & yes $\to$ no & 27/30 \\
+Haiku 4.5 & pA & no $\to$ yes & 14/16 \\
+Haiku 4.5 & pA & no $\to$ undetermined & 2/2 \\
+Haiku 4.5 & pA & undetermined $\to$ yes & 9/10 \\
+Haiku 4.5 & pA & undetermined $\to$ no & 18/22 \\
+Sol & pB & yes $\to$ no & 26/30 \\
+Sol & pB & no $\to$ yes & 11/16 \\
+Sol & pB & no $\to$ undetermined & 2/2 \\
+Sol & pB & undetermined $\to$ yes & 5/10 \\
+Sol & pB & undetermined $\to$ no & 20/22 \\
+Luna & pB & yes $\to$ no & 26/30 \\
+Luna & pB & no $\to$ yes & 12/16 \\
+Luna & pB & no $\to$ undetermined & 2/2 \\
+Luna & pB & undetermined $\to$ yes & 5/10 \\
+Luna & pB & undetermined $\to$ no & 20/22 \\
+Haiku 4.5 & pB & yes $\to$ no & 27/30 \\
+Haiku 4.5 & pB & no $\to$ yes & 12/16 \\
+Haiku 4.5 & pB & no $\to$ undetermined & 2/2 \\
+Haiku 4.5 & pB & undetermined $\to$ yes & 9/10 \\
+Haiku 4.5 & pB & undetermined $\to$ no & 19/22 \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lllrr}
+\caption{Tier breakdown. Tiers are intended structural difficulty, not empirically validated levels.}\\
+\toprule
+Model & Prompt & Tier & M1 & M2 \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & Tier & M1 & M2 \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & T1 & 9/12 (75.0\%) & 3/4 (75.0\%) \\
+Sol & pA & T2 & 27/30 (90.0\%) & 14/15 (93.3\%) \\
+Sol & pA & T3 & 18/28 (64.3\%) & 7/15 (46.7\%) \\
+Sol & pA & T4 & 7/10 (70.0\%) & 3/5 (60.0\%) \\
+Luna & pA & T1 & 12/12 (100.0\%) & 4/4 (100.0\%) \\
+Luna & pA & T2 & 28/30 (93.3\%) & 14/15 (93.3\%) \\
+Luna & pA & T3 & 18/28 (64.3\%) & 9/15 (60.0\%) \\
+Luna & pA & T4 & 7/10 (70.0\%) & 4/5 (80.0\%) \\
+Haiku 4.5 & pA & T1 & 12/12 (100.0\%) & 4/4 (100.0\%) \\
+Haiku 4.5 & pA & T2 & 25/30 (83.3\%) & 14/15 (93.3\%) \\
+Haiku 4.5 & pA & T3 & 23/28 (82.1\%) & 9/15 (60.0\%) \\
+Haiku 4.5 & pA & T4 & 10/10 (100.0\%) & 5/5 (100.0\%) \\
+Sol & pB & T1 & 11/12 (91.7\%) & 3/4 (75.0\%) \\
+Sol & pB & T2 & 28/30 (93.3\%) & 14/15 (93.3\%) \\
+Sol & pB & T3 & 18/28 (64.3\%) & 7/15 (46.7\%) \\
+Sol & pB & T4 & 7/10 (70.0\%) & 3/5 (60.0\%) \\
+Luna & pB & T1 & 11/12 (91.7\%) & 3/4 (75.0\%) \\
+Luna & pB & T2 & 28/30 (93.3\%) & 13/15 (86.7\%) \\
+Luna & pB & T3 & 19/28 (67.9\%) & 10/15 (66.7\%) \\
+Luna & pB & T4 & 7/10 (70.0\%) & 3/5 (60.0\%) \\
+Haiku 4.5 & pB & T1 & 12/12 (100.0\%) & 4/4 (100.0\%) \\
+Haiku 4.5 & pB & T2 & 25/30 (83.3\%) & 15/15 (100.0\%) \\
+Haiku 4.5 & pB & T3 & 24/28 (85.7\%) & 12/15 (80.0\%) \\
+Haiku 4.5 & pB & T4 & 8/10 (80.0\%) & 4/5 (80.0\%) \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrrr}
+\caption{Test accuracy by schema, including base and all interventions.}\\
+\toprule
+Schema & Sol A & Luna A & Haiku A & Sol B & Luna B & Haiku B \\
+\midrule\endfirsthead
+\toprule
+Schema & Sol A & Luna A & Haiku A & Sol B & Luna B & Haiku B \\
+\midrule\endhead
+\bottomrule\endfoot
+refund\_window & 23/23 & 23/23 & 23/23 & 23/23 & 23/23 & 23/23 \\
+witnessed\_contract & 18/23 & 22/23 & 19/23 & 21/23 & 21/23 & 23/23 \\
+booking\_cancel & 28/30 & 30/30 & 30/30 & 30/30 & 29/30 & 28/30 \\
+minor\_cancel & 30/30 & 30/30 & 28/30 & 30/30 & 30/30 & 30/30 \\
+debt\_limitation & 22/30 & 24/30 & 26/30 & 22/30 & 22/30 & 27/30 \\
+contract\_breach & 14/37 & 20/37 & 20/37 & 16/37 & 23/37 & 26/37 \\
+dismissal\_no\_notice & 26/36 & 26/36 & 33/36 & 26/36 & 26/36 & 34/36 \\
+hotel\_safe & 20/30 & 23/30 & 30/30 & 20/30 & 20/30 & 25/30 \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrrrrrrr}
+\caption{Disagreement counts: expected gold versus observed answer (U = undetermined).}\\
+\toprule
+Model & Prompt & Y$\to$U & N$\to$U & Y$\to$N & N$\to$Y & U$\to$Y & U$\to$N & Invalid \\
+\midrule\endfirsthead
+\toprule
+Model & Prompt & Y$\to$U & N$\to$U & Y$\to$N & N$\to$Y & U$\to$Y & U$\to$N & Invalid \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol & pA & 40 & 18 & 0 & 0 & 0 & 0 & 0 \\
+Luna & pA & 22 & 15 & 4 & 0 & 0 & 0 & 0 \\
+Haiku 4.5 & pA & 9 & 14 & 4 & 2 & 0 & 0 & 1 \\
+Sol & pB & 36 & 15 & 0 & 0 & 0 & 0 & 0 \\
+Luna & pB & 30 & 15 & 0 & 0 & 0 & 0 & 0 \\
+Haiku 4.5 & pB & 12 & 2 & 4 & 5 & 0 & 0 & 0 \\
+\end{longtable}\endgroup
+
+
+Every Sol pA disagreement with gold (58/239) is a yes/no gold paired with an undetermined answer. This is a diagnostic pattern, not proof that all 58 answers are correct: the natural-language entailment must be adjudicated item by item.
+
+\subsection*{A.6 Baselines and paired comparisons}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrr}
+\caption{Model-free test baselines. Oracle is a pipeline check, not a competing baseline.}\\
+\toprule
+Baseline & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endfirsthead
+\toprule
+Baseline & M0 & M1 & M2 & M3a & M3b \\
+\midrule\endhead
+\bottomrule\endfoot
+const-yes & 8/24 (33.3\%) & 26/80 (32.5\%) & 16/39 (41.0\%) & 16/48 (33.3\%) & 16/48 (33.3\%) \\
+const-no & 8/24 (33.3\%) & 52/80 (65.0\%) & 15/39 (38.5\%) & 16/48 (33.3\%) & 16/48 (33.3\%) \\
+const-undetermined & 8/24 (33.3\%) & 2/80 (2.5\%) & 8/39 (20.5\%) & 16/48 (33.3\%) & 16/48 (33.3\%) \\
+keyword-trigger & 24/24 (100.0\%) & 62/80 (77.5\%) & 6/39 (15.4\%) & 18/48 (37.5\%) & 18/48 (37.5\%) \\
+oracle & 24/24 (100.0\%) & 80/80 (100.0\%) & 39/39 (100.0\%) & 48/48 (100.0\%) & 48/48 (100.0\%) \\
+\end{longtable}\endgroup
+
+
+The keyword-trigger baseline is deliberately gold-assisted: it starts from base gold and changes the answer when the edited sentence overlaps rule vocabulary. Its M0=100\% is by construction, not learned performance. It fails near-miss specificity. The criterion that a baseline should not solve all headline metrics excludes oracle, which must score 100\% by construction.
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrr}
+\caption{Exploratory paired accuracy difference across all non-base items, percentage points [95\% CI].}\\
+\toprule
+Comparison & pA & pB & Pooled prompts \\
+\midrule\endfirsthead
+\toprule
+Comparison & pA & pB & Pooled prompts \\
+\midrule\endhead
+\bottomrule\endfoot
+Sol minus Haiku 4.5 & -11.2 [-19.1, -2.6] & -11.2 [-18.7, -2.5] & -11.2 [-18.0, -3.2] \\
+Sol minus Luna & -6.5 [-11.1, -2.3] & -2.3 [-7.9, 1.4] & -4.4 [-9.2, -0.7] \\
+Luna minus Haiku 4.5 & -4.7 [-11.6, 2.6] & -8.8 [-14.5, -2.8] & -6.7 [-12.6, -0.7] \\
+\end{longtable}\endgroup
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrr}
+\caption{Exploratory paired differences for each headline metric, pooled prompts.}\\
+\toprule
+Comparison & M1 & M2 & M3a \\
+\midrule\endfirsthead
+\toprule
+Comparison & M1 & M2 & M3a \\
+\midrule\endhead
+\bottomrule\endfoot
+Haiku 4.5 minus Sol & 8.8 [-2.0, 18.4] & 16.7 [3.4, 29.4] & 10.4 [-2.1, 21.9] \\
+Luna minus Sol & 3.1 [0.5, 8.1] & 7.7 [-1.6, 19.8] & 3.1 [-2.1, 8.3] \\
+\end{longtable}\endgroup
+
+
+Intervals excluding zero describe differences in agreement with current gold only. They do not rescue gold validity, eliminate multiple-testing effects, or establish one model's superiority. The dev/test ordering reversal must be reported, not optimized away.
+
+\subsection*{A.7 Archived development iterations and validity findings}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{llrr}
+\caption{Saved superseded run snapshots. They overlap later runs; no comparable re-scoring without the exact historical dataset.}\\
+\toprule
+Snapshot & Model & Records & Invalid under current parser \\
+\midrule\endfirsthead
+\toprule
+Snapshot & Model & Records & Invalid under current parser \\
+\midrule\endhead
+\bottomrule\endfoot
+pre-goods-repair c & Haiku 4.5 & 235 & 0 \\
+pre-goods-repair c & Luna & 235 & 0 \\
+pre-goods-repair c & Sol & 235 & 0 \\
+pre-expansion a & Haiku 4.5 & 119 & 0 \\
+pre-expansion b & Haiku 4.5 & 119 & 0 \\
+pre-expansion a & Luna & 119 & 0 \\
+pre-expansion b & Luna & 119 & 0 \\
+pre-expansion a & Sol & 119 & 0 \\
+pre-expansion b & Sol & 119 & 0 \\
+\end{longtable}\endgroup
+
+
+Some intermediate 119-item and 235-item states were not separately snapshotted. The exact historical facts/gold are not versioned for every development round; re-scoring archived answers against today's repaired templates would be misleading. Therefore this table reports verifiable record/parse counts, not reconstructed performance. Small gateway verbatim/style probes were exploratory checks and were not a validated evaluation or fully archived experiment.
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{p{3.4cm}p{4.7cm}p{7.1cm}}
+\caption{Post-run audit: examples requiring semantic adjudication.}\\
+\toprule
+Schema & Gold assumption & What the English facts fail to establish \\
+\midrule\endfirsthead
+\toprule
+Schema & Gold assumption & What the English facts fail to establish \\
+\midrule\endhead
+\bottomrule\endfoot
+hotel\_safe & Watch in safe at theft & Deposited on first day does not entail remained in safe at theft. \\
+debt\_limitation & No written acknowledgment & Never wrote to creditor does not exclude acknowledgment to someone else. \\
+dismissal\_no\_notice & No written job protection & No extra agreement does not exclude protection inside the standard employment contract. \\
+contract\_breach & Foreseeable/unforeseeable event & Annual recurrence or historical novelty does not logically settle foreseeability of the specific event. \\
+Duplicate stimuli & 239 independent texts & There are 183 unique prompts; 46 duplicate groups contain 102 item IDs (56 excess copies). \\
+M5 proxy & Edited fact is the unique deciding fact & Multiple supporting facts and output-format differences are not represented by the single-ID proxy. \\
+\end{longtable}\endgroup
+
+
+Conditional rates select different base-correct subsets across models, and ambiguous sentences can occur in multiple duplicate stimuli. Cluster resampling handles within-schema dependence but does not remove repeated-stimulus weighting or repair semantic errors. Some v1 flips also drop dependent facts, so not every generated pair is a one-proposition edit. Full detail is in \path{docs/TEST_VALIDITY_AUDIT_v1.md}. No items were removed after seeing test scores.
+
+\subsection*{A.8 Revised implementation status and next experiment}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrr}
+\caption{V2 offline implementation only: no model evaluation performed.}\\
+\toprule
+Split & Schemas & Unique stimuli & Intervention edges \\
+\midrule\endfirsthead
+\toprule
+Split & Schemas & Unique stimuli & Intervention edges \\
+\midrule\endhead
+\bottomrule\endfoot
+Repaired inherited dev & 15 & 346 & 361 \\
+New held-out test & 4 & 117 & 117 \\
+Total & 19 & 463 & 478 \\
+\end{longtable}\endgroup
+
+
+The revised offline implementation now passes 14 regression tests. It separates stimulus IDs from intervention edges, checks exactly one fact-ID change per edge, and cross-checks all read-once three-valued formulas using an independent Boolean-completion evaluator. The v1 schemas are all development data in v2; four new schemas are reserved for a later evaluation. V2 retains the original insurance reporting-possibility exception with explicit possible/impossible facts, rather than silently changing it to another rule. Its runtime can retain full request/response metadata and distinguish prompt variation from repeat agreement. M5 is excluded from ability conclusions.
+
+\textbf{Remaining work.} Offline checks do not establish natural-language or legal validity. Review the new items, resolve outstanding semantic issues with a second reader where possible, finalize the research question with the supervisor, and only then authorize the next API evaluation. The API gate remains disabled; no v2 model scores are claimed. This project has implemented a fixed-template diagnostic benchmark, not a reliable automated legal Challenger, and has not established novelty or superiority over existing faithfulness methods.
